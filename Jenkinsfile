@@ -13,27 +13,7 @@ pipeline{
 		
 		}
 		
-		stage('Testing Stage'){
-			steps{
-				withMaven(maven : 'maven3.6'){
-					sh 'mvn test'
-					
-								
-				}
-			}
 		
-		}
-		
-		stage('Deployment Stage'){
-			steps{
-				withMaven(maven : 'maven3.6'){
-					sh 'mvn deploy'
-					
-								
-				}
-			}
-		
-		}
 	
 	}
 }
