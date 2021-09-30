@@ -4,6 +4,10 @@ pipeline{
 		maven 'Maven'
 		jdk 'jdk-11'
 		}
+		
+	environment {
+       env.PATH = env.PATH + ";c:\\Windows\\System32"
+   }
 		 
 	stages {
 		stage ("initialize") {
