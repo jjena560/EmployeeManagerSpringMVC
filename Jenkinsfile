@@ -5,50 +5,23 @@ pipeline{
 		jdk 'jdk-11'
 		}
 		
-	environment {
-       env.PATH = env.PATH + ";c:\\Windows\\System32"
-   }
+
 		 
 	stages {
 		stage ("initialize") {
 			steps {
-			bat '''
-			echo "PATH = ${PATH}"
-			echo "M2_HOME = ${M2_HOME}"
-			'''
+				bat 'mvn clean insttall'
 			}
 		
 		}
 	
 	
 	
-        stage('build') {
-            steps {
-            	withMaven(maven : 'Maven'){
-					echo 'Hello this is build'
-                	bat 'mvn install'
-					
-								
-				}
-                
-            }
-        }
-        
-        stage('Testing Stage'){
-			steps{
-				withMaven(maven : 'Maven'){
-					bat 'mvn test'
-					
-								
-				}
-			}
-		
-		}
+    
 		
 		stage('Deployment Stage'){
 			steps{
-				withMaven(maven : 'Maven'){
-					bat 'mvn deploy'
+				echo 'deploy'
 					
 								
 				}
