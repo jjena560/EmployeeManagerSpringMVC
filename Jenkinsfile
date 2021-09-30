@@ -1,32 +1,42 @@
 pipeline{
 	agent any
+	
 	tools{
 		maven 'Maven'
 		jdk 'jdk-11'
 		}
 		
-
+	
 		 
 	stages {
 		stage ("initialize") {
 			steps {
-				bat 'mvn clean install'
+				echo 'mvn initialize'
 			}
 		
 		}
-	
-	
-	
-    
 		
-		stage('Deployment Stage'){
+		stage('Testing Stage'){
 			steps{
-				echo 'deploy'
+				withMaven(maven : 'maven3.6'){
+					echo 'mvn test'
 					
 								
 				}
 			}
 		
+		}
 		
-    }
+		stage('Deployment Stage'){
+			steps{
+				withMaven(maven : 'maven3.6'){
+					echo 'mvn deploy'
+					
+								
+				}
+			}
+		
+		}
+	}   
+        
 }
