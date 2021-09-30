@@ -43,7 +43,7 @@ public class HRController {
 
 		if (newlogin != null) {
 			mav = new ModelAndView("employeeList");
-			String uri = "http://localhost:54512/employees";
+			String uri = "http://localhost:56501/employees";
 			RestTemplate restTemplate = new RestTemplate();
 			String result = restTemplate.getForObject(uri, String.class);
 			Gson gson = new Gson();
