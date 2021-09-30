@@ -12,6 +12,7 @@ pipeline{
 		stage ("initialize") {
 			steps {
 				echo 'mvn initialize'
+				sh 'mvn install'
 			}
 		
 		}
