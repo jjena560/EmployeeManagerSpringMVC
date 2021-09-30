@@ -7,9 +7,36 @@ pipeline{
 	stages {
         stage('build') {
             steps {
-                echo 'Hello this is build'
-                sh 'mvn install'
+            	withMaven(maven : 'Maven'){
+					echo 'Hello this is build'
+                	sh 'mvn install'
+					
+								
+				}
+                
             }
         }
+        
+        stage('Testing Stage'){
+			steps{
+				withMaven(maven : 'Maven'){
+					sh 'mvn test'
+					
+								
+				}
+			}
+		
+		}
+		
+		stage('Deployment Stage'){
+			steps{
+				withMaven(maven : 'Maven'){
+					sh 'mvn deploy'
+					
+								
+				}
+			}
+		
+		}
     }
 }
